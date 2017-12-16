@@ -1,0 +1,50 @@
+@keyframes open {
+  0% {
+    top: -10px;
+    opacity: 0;
+  }
+  20% {
+    top: 20px;
+    opacity: 1;
+  }
+  80% {
+    top: 20px;
+    opacity: 1;
+  }
+  100% {
+    top: -20px;
+    opacity: 0;
+  }
+}
+
+.open {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  overflow: hidden;
+  border-radius: 4px;
+  text-align: center;
+  padding: 5px 20px;
+  animation: open 2s;
+}
+
+.open-message {
+  color: #909399;
+  background: rgba(237, 242, 252, 0.8);
+}
+
+.open-success {
+  color: #67C23A;
+  background: rgba(225, 243, 216, 0.8);
+}
+
+.open-warning {
+  color: #E6A23C;
+  background: rgba(253, 246, 236, 0.8);
+}
+
+.open-error {
+  color: #F56C6C;
+  background: rgba(254, 240, 240, 0.8);
+}
