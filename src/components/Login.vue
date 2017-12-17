@@ -13,8 +13,10 @@
         <div class="password">
           <input type="password" v-model="password">
         </div>
-        <div class="submit" @click="login" @mouseenter="isHover=!isHover" @mouseleave="isHover=!isHover"
-             :class="{'hover':isHover}">
+        <div class="submit" @click="status.login && login()"
+             @mouseenter="style.isHover=!style.isHover"
+             @mouseleave="style.isHover=!style.isHover"
+             :class="{'hover':style.isHover}">
           <a>登录</a>
         </div>
       </form>
@@ -31,31 +33,53 @@
       return {
         username: '',
         password: '',
-        isHover: false
+        status: {
+          login: true
+        },
+        style: {
+          isHover: false
+        }
       }
     },
     methods: {
-      login: function () {
-//        this.$layer.open({
-//          content: '登录'
-//        })
-//        this.$layer.open({
-//          kind: 'success',
-//          content: '登录'
-//        })
-//        this.$layer.open({
-//          kind: 'warning',
-//          content: '登录'
-//        })
-        this.$layer.open({
-          kind: 'error',
-          content: '登录'
-        })
+      login() {
+        let username = this.$validate('username', this.username),
+          password = this.$validate('password', this.password);
+        this.status.login = false;
+        if (!username.status) {
+          this.$layer.open({
+            content: username.info,
+            kind: 'warning'
+          });
+          this.status.login = true;
+          return;
+        } else if (!password.status) {
+          this.$layer.open({
+            content: password.info,
+            kind: 'warning'
+          });
+          this.status.login = true;
+          return;
+        } else {
+          this.$axios.post('user/login.ajax', {
+            'username': this.username,
+            'password': this.password
+          }).then((res) => {
+            if (res.data.code === 200) {
+//              TODO:登录成功路由跳转
+            } else {
+              this.$layer.open({
+                kind: 'error',
+                content: res.data.msg
+              });
+            }
+            this.status.login = true;
+          });
+        }
       }
     },
     mounted() {
       drawCanvas();
-      this.login();
     }
   }
 </script>

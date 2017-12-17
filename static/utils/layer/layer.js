@@ -2,8 +2,7 @@ class Layer {
 
   /**
    * 消息提示
-   * @data {Object}
-   * Options:content kind
+   * @param {Object} 包含content和kind
    */
   open(data) {
     // 创建消息框
@@ -30,9 +29,10 @@ class Layer {
     box.innerText = data.content || '';
     // 移除消息框
     setTimeout(() => {
-      document.body.removeChild(box);
+      // document.body.removeChild(box);
     }, 2000);
   }
+
 
 }
 
