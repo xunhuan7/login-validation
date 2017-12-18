@@ -7,8 +7,7 @@
  * @return {Object} 包含status和info
  */
 function validate(kind, str, minLength = 5, maxLength = 18) {
-  let res = {},
-    reg;
+  let res = {}, reg;
   switch (kind) {
     // 验证邮箱
     case 'email':

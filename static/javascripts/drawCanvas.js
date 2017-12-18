@@ -1,10 +1,10 @@
-module.exports = function () {
+function drawCanvas() {
 
   const WIDTH = window.innerWidth,
     HEIGHT = window.innerHeight,
     POINT = 200;
 
-  let canvas = document.getElementById('canvas'),
+  let canvas = document.querySelector('#canvas'),
     ctx = canvas.getContext('2d'),
     circleArr = [],
     colors = ["rgba(170,255,0,0.5)", "rgba(255,255,0,0.5)", "rgba(255,0,0,0.5)", , "rgba(190,242,2,0.5)", "rgba(0,178,255,0.5)", "rgba(192,250,56,0.5)", "rgba(255,0,170,0.5)", "rgba(170,0,255,0.5)", "rgba(0,170,255,0.5)"];
@@ -77,3 +77,5 @@ module.exports = function () {
   init();
 
 }
+
+module.exports = drawCanvas;

@@ -13,12 +13,10 @@ Vue.config.productionTip = false;
 // 自定义工具
 import '../static/utils/layer/layer.css';
 import layer from '../static/utils/layer/layer';
-import validate from '../static/utils/validate';
 
 // Vue原型添加
 Vue.prototype.$axios = axios;
 Vue.prototype.$layer = layer;
-Vue.prototype.$validate = validate;
 
 // axios全局配置
 axios.defaults.baseURL = 'http://localhost:8888/';
